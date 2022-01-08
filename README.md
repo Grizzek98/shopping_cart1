@@ -11,5 +11,3 @@ You can do the following:
 
 ## Authors
 * Benjamin Anderson - benjamintayloranderson98@gmail.com
-
-test
