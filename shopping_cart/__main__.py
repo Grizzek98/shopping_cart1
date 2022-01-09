@@ -1,18 +1,8 @@
-from tkinter import *
-from tkinter.ttk import *
+from window.window import window
 
 
 def main():
-    root = Tk()
-    root.title("First Tkinter Program")
-
-    frame = Frame(root)
-    frame.pack()
-
-    button = Button(frame, text = "Bro")
-    button.pack()
-
-    root.mainloop()
+    window()
 
 if __name__ == "__main__":
     main()
