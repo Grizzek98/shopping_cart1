@@ -19,4 +19,4 @@ class WelcomeWindow:
         continue_btn.pack()
 
     def continue_btn_click(self):
-        return
+        pass
