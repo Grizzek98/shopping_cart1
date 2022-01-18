@@ -36,6 +36,7 @@ class LoginWindow(tkinter.Frame):
 
     def __init__(self, root):
         tkinter.Frame.__init__(self, root)
+        self.root = root
         
         self.username_get = StringVar()
         self.password_get = StringVar()
@@ -58,15 +59,37 @@ class LoginWindow(tkinter.Frame):
         username = self.username_get.get()
         password = self.password_get.get()
 
-        login_file = open('C:\\python\\My Python\\shopping_cart1\\shopping_cart\\window\\user_data\\' + 'login_info.json')
+        login_file = open('C:\\python\\My Python\\shopping_cart1\\shopping_cart\\user_data\\' + 'login_info.json')
         data = json.load(login_file)
         for user in data:
             if username == data[user].get('username') and password == data[user].get('password'):
-                print('yay!')
-
-        print("Username: ", username)
-        print("Password: ", password)
+                self.root.switch_frame(MainWindow)
+                print('Did it work?')
 
         # clear the variables
         self.username_get.set("")
         self.password_get.set("")
+
+class MainWindow(tkinter.Frame):
+    
+    def __init__(self, root):
+        tkinter.Frame.__init__(self, root)
+
+        menubar = Menu(self)
+        filemenu = Menu(menubar, tearoff=0)
+        filemenu.add_command(label="New", command=self.donothingyet)
+        filemenu.add_command(label="Open", command=self.donothingyet)
+        filemenu.add_command(label="Save", command=self.donothingyet)
+        filemenu.add_separator()
+        filemenu.add_command(label="Exit", command=root.quit)
+        menubar.add_cascade(label="File", menu=filemenu)
+
+        helpmenu = Menu(menubar, tearoff=0)
+        helpmenu.add_command(label="Help Index", command=self.donothingyet)
+        helpmenu.add_command(label="About...", command=self.donothingyet)
+        menubar.add_cascade(label="Help", menu=helpmenu)
+
+        root.config(menu=menubar)
+
+    def donothingyet(self):
+        pass
